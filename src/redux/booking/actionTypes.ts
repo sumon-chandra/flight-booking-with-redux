@@ -1,2 +1,2 @@
-export const BOOKING = 'booking';
-export const DELETE = 'delete';
+export const BOOKING = "booking";
+export const DELETE = "delete";

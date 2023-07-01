@@ -1,4 +1,5 @@
 export interface BookingInfo {
+  id: number;
   from: string;
   to: string;
   date: string;
@@ -8,7 +9,7 @@ export interface BookingInfo {
 
 export interface Action {
   type: string;
-  payload: BookingInfo;
+  payload: BookingInfo | number;
 }
 
 export interface RootReducer {

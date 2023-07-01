@@ -15,6 +15,7 @@ const InputData = () => {
     const ticketClassName = form.ticketclassName.value;
 
     const bookingInfo: BookingInfo = {
+      id: Math.ceil(Math.random() * 100),
       from,
       to,
       guests,

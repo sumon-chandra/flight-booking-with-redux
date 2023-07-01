@@ -1,8 +1,14 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { BookingInfo, RootReducer } from "../types";
+import { deleteFlight } from "../redux/booking/actions";
 
 const DisplayData = () => {
   const bookList = useSelector((state: RootReducer) => state.bookingInfo);
+  const dispatch = useDispatch();
+
+  const handleDelete = (id: number) => {
+    dispatch(deleteFlight(id));
+  };
 
   return (
     <section className="table-container">
@@ -20,7 +26,7 @@ const DisplayData = () => {
         <tbody className="divide-y divide-gray-300/20" id="lws-previewBooked">
           {/* <!-- Row --> */}
           {bookList?.map((book: BookingInfo) => (
-            <tr className="lws-bookedTable text-black">
+            <tr key={book?.id} className="lws-bookedTable text-black">
               <td className="px-6 py-4">
                 <div className="flex items-center space-x-3">
                   <p className="lws-bookedFrom">{book?.from}</p>
@@ -43,7 +49,10 @@ const DisplayData = () => {
               </td>
               <td className="px-6 py-4 text-center">
                 <div className="flex justify-center gap-4">
-                  <button className="lws-remove">
+                  <button
+                    className="lws-remove"
+                    onClick={() => handleDelete(book?.id)}
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
